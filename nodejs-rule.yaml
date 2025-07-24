@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: nodejs-alerts
+  namespace: monitoring # Ensure this matches your monitoring namespace
+  labels: 
+    app: kube-prometheus-stack
+    release: prometheus # it must match the label used in your Prometheus default configuration
+spec:
+  groups:
+  - name: nodejs.alert  # Name of the alert group
+    rules:
+    - alert: HighRequestRate_NodeJS
+      expr: rate(http_requests_total[5m]) > 10 # expression means high request rate 
+      for: 0m
+      labels:
+        app: nodejs
+        namespace: monitoring # Ensure this matches your monitoring namespace
+      annotations:
+        summary: "High request rate detected in Node.js application"
+        description: "The Node.js application is receiving a high request rate ({{ $value }})"

@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: nodejs-monitor
+  namespace: monitoring # Ensure this matches your monitoring namespace
+  labels:
+    release: prometheus # Adjust if you use a different labels
+spec:
+  selector:
+    matchLabels:
+      app: nodejs # Match the label used in your nodejs-app.yaml
+  namespaceSelector:
+    matchNames:
+      - default # where your nodejs-svc is deployed
+  endpoints:
+  - port: http-nodejs-app # Match the name of the port in your nodejs-svc.yaml
+    interval: 5 # Scrape interval, adjust as needed
+    path: /metrics # Path to scrape metrics from
+    ### must also be defined in the nodejs application code
+
+    

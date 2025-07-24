@@ -1,0 +1,23 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: nodejs-alert-manager
+  namespace: monitoring # Ensure this matches your monitoring namespace
+spec:
+  route:
+    receiver: 'nodejs-slack'
+    repeatInterval: 5m
+    routes:
+      - matchers:
+          - name: alert-https
+            value: HighRequestRate_NodeJS # Match the alert name you created in nodejs-rule.yaml
+        repeatInterval: 10m
+  receiver: 
+    - name: nodejs-slack'
+      slackConfigs:
+        - apiURL: 
+            key: webhook 
+            name: slack-secret # Ensure this matches your secret name
+          channel: '#https_requests' # Adjust to your Slack channel
+          sendResolved: true
+  
