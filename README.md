@@ -1,6 +1,6 @@
 # 📊📈 Node.js Application Monitoring with Prometheus, Grafana & Kubernetes
 
-### A complete DevOps pipeline for **monitoring a Node.js application** using **Prometheus**, **Grafana**, and **Kubernetes (kubeadm or EKS)**.
+### A DevOps Practices for **monitoring a Node.js application** using **Prometheus**, **Grafana**, and **Kubernetes (kubeadm or EKS)**.
 
 ---
 
