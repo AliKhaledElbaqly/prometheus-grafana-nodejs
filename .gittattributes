@@ -1,9 +1,0 @@
-* linguist-detectable
-
-# Set language overrides
-*.sh linguist-language=Bash
-*.yaml linguist-language=YAML
-*.yml linguist-language=YAML
-*.js linguist-language=JavaScript
-Dockerfile linguist-language=Dockerfile
-dockerfile* linguist-language=Dockerfile
